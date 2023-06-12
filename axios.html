@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Динамічна таблиця з використанням jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            fetch('http://lab.vntu.org/webusers/api-server/lab7.php', {
+                mode: 'no-cors',
+                method: "get"
+            }).then(res => {
+                return res.json();
+            }).then(data => {
+                console.log(data)
+            })
+
+            $.getJSON('http://lab.vntu.org/webusers/api-server/lab7.php', function(data) {
+                var table = '<table>';
+                table += '<tr><th>ID</th><th>Ім\'я</th><th>Email</th></tr>';
+                $.each(data, function(key, value) {
+                    table += '<tr>';
+                    table += '<td>' + value.id + '</td>';
+                    table += '<td>' + value.name + '</td>';
+                    table += '<td>' + value.email + '</td>';
+                    table += '</tr>';
+                });
+                table += '</table>';
+                $('#table-container').html(table);
+            });
+        });
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<div id="table-container"></div>
+</body>
+</html>
