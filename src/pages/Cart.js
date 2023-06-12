@@ -37,7 +37,7 @@ export const Cart = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            Корзина
+            Cart
           </h2>
           <div class="cart__clear">
             <svg
@@ -77,7 +77,7 @@ export const Cart = () => {
               />
             </svg>
 
-            <span>Очистить корзину</span>
+            <span>Clear Cart</span>
           </div>
         </div>
         <div class="content__items">
@@ -133,7 +133,7 @@ export const Cart = () => {
               </div>
             </div>
             <div class="cart__item-price">
-              <b>770 ₽</b>
+              <b>770 ₴</b>
             </div>
             <div class="cart__item-remove">
               <div class="button button--outline button--circle">
@@ -162,18 +162,15 @@ export const Cart = () => {
           <div class="cart__bottom-details">
             <span>
               {" "}
-              Всего пицц: <b>3 шт.</b>{" "}
+              Total pizzas: <b>3 pcs.</b>{" "}
             </span>
             <span>
               {" "}
-              Сумма заказа: <b>900 ₽</b>{" "}
+              Order value: <b>900 ₴</b>{" "}
             </span>
           </div>
           <div class="cart__bottom-buttons">
-            <Link
-              to="/"
-              class="button button--outline button--add go-back-btn"
-            >
+            <Link to="/" class="button button--outline button--add go-back-btn">
               <svg
                 width="8"
                 height="14"
@@ -190,10 +187,10 @@ export const Cart = () => {
                 />
               </svg>
 
-              <span>Вернуться назад</span>
+              <span>Go back</span>
             </Link>
             <div class="button pay-btn">
-              <span>Оплатить сейчас</span>
+              <span>Pay Now</span>
             </div>
           </div>
         </div>

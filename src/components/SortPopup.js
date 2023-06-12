@@ -1,19 +1,38 @@
 import React from "react";
 
-export const SortPopup = ({ sortBy, setSortBy }) => {
-  const sortTypes = ["популярности", "цене", "алфавиту"];
+export const SortPopup = ({ sortBy, setSortBy, sortOrder, setSortOrder }) => {
+  const sortTypes = [
+    {
+      name: "rating",
+      property: "rating",
+    },
+    {
+      name: "price",
+      property: "price",
+    },
+    {
+      name: "title",
+      property: "title",
+    },
+  ];
 
   const [isOpen, setIsOpen] = React.useState(false);
 
   const onChooseSort = (i) => {
-    setSortBy(sortTypes[i]);
+    setSortBy(i);
     setIsOpen(false);
+  };
+
+  const changeSortOrder = () => {
+    setSortOrder(!sortOrder);
   };
 
   return (
     <div className="sort">
       <div className="sort__label">
         <svg
+          className={sortOrder === true ? "rotated" : ""}
+          onClick={changeSortOrder}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -25,19 +44,19 @@ export const SortPopup = ({ sortBy, setSortBy }) => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортировка по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>{sortBy}</span>
+        <b>Sort by:</b>
+        <span onClick={() => setIsOpen(!isOpen)}>{sortBy.name}</span>
       </div>
       {isOpen && (
         <div className="sort__popup">
           <ul>
-            {sortTypes.map((type, i) => (
+            {sortTypes.map((obj, i) => (
               <li
-                key={type}
-                onClick={() => onChooseSort(i)}
-                className={sortBy === type ? "active" : undefined}
+                key={obj.name}
+                onClick={() => onChooseSort(obj)}
+                className={sortBy === obj ? "active" : undefined}
               >
-                {type}
+                {obj.name}
               </li>
             ))}
           </ul>

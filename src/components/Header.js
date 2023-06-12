@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import logoSvg from "../assets/svg/site-logo.svg";
 import shoppingCart from "../assets/svg/shopping-cart.svg";
+import { Search } from "./Search";
 
 export const Header = () => {
   return (
@@ -14,13 +15,14 @@ export const Header = () => {
             <img width="38" src={logoSvg} alt="Pizza logo" />
             <div>
               <h1>React Pizza</h1>
-              <p>самая вкусная пицца во вселенной</p>
+              <p>the tastiest pizza in the universe</p>
             </div>
           </div>
         </Link>
+        <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
-            <span>520 ₽</span>
+            <span>520 ₴</span>
             <div className="button__delimiter"></div>
             <img src={shoppingCart} alt="Shopping cart" />
             <span>3</span>
